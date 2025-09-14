@@ -1,0 +1,50 @@
+// Table for displaying stock records
+doctype html
+html 
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    title Backend with Dear Irene
+    link(href='/css/stocktable.css' rel='stylesheet')
+
+  body
+    .container.mt-5
+      h3.mb-3 Sales Records
+
+      table.table.table-bordered.table-striped
+        thead.table-dark
+          tr
+            th Date
+            th Customer Name
+            th Product
+            th Quantity
+            th Total Price
+            th Payment Type
+            th Sales Agent
+            th Delivery Method
+            th Update
+            th Delete
+        tbody
+          if items && items.length
+            each item in items
+              tr
+                td #{moment(item.datebought).format("DD-MM-YYYY")}
+                td #{item.name}
+                td #{item.product}
+                td #{item.quantity}
+                td #{item.price}
+                td #{item.payment}
+                td #{item.agent}
+                td #{item.delivery}
+                td
+                  a.btn.btn-warning.btn-sm(href=`/editsales/${item._id}`) Edit
+                td
+                  form(method='post', action='/deletesales')
+                    input(type='hidden', name='id', value=item._id)
+                    button.btn.btn-danger.btn-sm(type='submit') Delete
+          else
+            tr
+              td(colspan="10").text-center No sales available
+
+  // Add sales button (placed below table)
+  a.btn.btn-success(href='/Addsale') Add Sales

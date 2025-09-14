@@ -1,12 +1,11 @@
-const express =require("express");
-const router = express.Router ();
+const express = require("express");
+const router = express.Router();
 const path = require("path");
 //syntax
 router.get("/pream", (req, res) => {
   //
   res.sendFile(path.join(__dirname + "/../html/index.html"));
 });
-
 
 // router.get("/", (req, res) => {
 //   // new
@@ -39,11 +38,11 @@ router.get("/about", (req, res) => {
 });
 
 //manager route
-router.get("/manns", (req, res) => {
-  res.sendFile(path.join(__dirname + "/../html/man.html"));
+router.get("/manager2", (req, res) => {
+  res.sendFile(path.join(__dirname + "/../html/manager.html"));
 });
 
-router.post("/man", (req, res) => {
+router.post("/manager2", (req, res) => {
   console.log(req.body);
 });
 // router.use((req, res, next) => {
@@ -65,5 +64,4 @@ router.post("/registeruser", (req, res) => {
   console.log(req.body);
 });
 
-
-module.exports = router
+module.exports = router;

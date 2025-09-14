@@ -1,0 +1,39 @@
+extends layout 
+block content
+    form#stock(action='/stock' method='post' )
+        .form-wrapper
+            .form-container
+                h2 Stock Entry
+                .card-body
+                    .mb-3
+                    label.form-label Product Name
+                    input#productName.form-control(type='text' name='productName' required='')
+                .mb-3
+                    label.form-label Product Type
+                    select#productType.form-control(name='productType' required)
+                        option(value='Wood') Wood
+                        option(value='Furniture') Furniture
+                .mb-3
+                    label.form-label Cost Price
+                    input#costPrice.form-control(type='number' name='costPrice' required='')
+                .mb-3
+                    label.form-label Selling Price
+                    input#sellPrice.form-control(type='number' name='sellPrice' required='')
+                .mb-3
+                    label.form-label Quantity
+                    input#quantity.form-control(type='number' name='quantity' required='')
+                .mb-3
+                    label.form-label Supplier Name
+                    input#supplierName.form-control(type='text' name='supplierName' required='')
+                .mb-3
+                    label.form-label Quality
+                    input#quality.form-control(type='text' name='quality')
+                .mb-3
+                    label.form-label Color (optional)
+                    input#color.form-control(type='text' name='color')
+                .mb-3
+                    label.form-label Measurements (optional)
+                    input#measurements.form-control(type='text' name='measurements')
+                button.btn.btn-warning(type='submit') Add Stock
+            script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js')
+            script(src='about.js')
