@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const passport = require("passport");
 const UserModel = require("../models/userModel")
-
+const StockModel = require("../models/stockModel");
 //getting the signup form
 
 
@@ -12,26 +12,37 @@ router.get("/rights", (req, res) => {
 
 router.post("/rights", async (req, res) => {
   try {
-    const user = new UserModel(req.body);
+    // const user = new UserModel(req.body);
     // after saving, go to login page
-    console.log(req.body);
+    // console.log(req.body);
     let existingUser = await UserModel.findOne({ email: req.body.email });
     if (existingUser) {
       return res.status(400).send("This email has already been used before!");
-    } else {
-      const user = new UserModel(req.body);
-      await UserModel.register(user, req.body.password, (error) => {
-        if (error) {
-          throw error;
-        }
-        res.redirect("/login");
-      });
     }
-  } catch (error) {
-    res.status(400).send("Please just try again!");
-  }
+
+    
+    // create new user
+    const newUser = new UserModel({
+      username: req.body.username, // required by passport-local-mongoose
+      email: req.body.email,
+      role: req.body.role
+    });
+
+
+      const user = new UserModel(req.body);
+     UserModel.register(user, req.body.password, (error) => {
+        if (error) {
+      return res.status(400).send("Please just try again!");
+        }
+       res.redirect("/login");
+      });
+    } catch (error) {
+      console.error("Error in signup:", error);
+      res.status(500).send("Server error. Please try again later!");
+    } 
+  });
   //added this.res.redirect that directs me to the login page after registering
-});
+
 
 router.get("/login", (req, res) => {
   res.render("login",{title: "login page"});

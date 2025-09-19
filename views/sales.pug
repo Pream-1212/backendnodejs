@@ -16,14 +16,17 @@ block content
           label(for="customer") Customer Name:
           input#customer.form-control(type="text", placeholder="Customer Name", name="name", required)
         .mb-2
-          label(for="product") Product:
-          input#product.form-control(type="text", placeholder="Product Name", name="product", required)
+          label(for="product") Product Name:
+          select#product.form-select(name="product", required)
+            if stocks.length 
+              each stock in stocks
+                option(value=stock.productName)=stock.productName          
         .mb-2
           label(for="quantity") Quantity:
           input#quantity.form-control(type="number", placeholder="Quantity", name="quantity", required)
         .mb-2
-          label(for="price") Total Price: UGX
-          input#price.form-control(type="text", placeholder="Total price", name="price", required)
+          label(for="unitprice") Unit Price: UGX
+          input#price.form-control(type="text", placeholder="Total price", name="unitPrice", required)
         .mb-2
           label.payment Payment Type:
           select.form-control#paymentType(name="payment", required)
@@ -32,9 +35,9 @@ block content
             option(value="bankoverdraft") Bank Overdraft
             option(value="banktransfer") Bank Transfer
             option(value="paypal") PayPal
-        .mb-2
-          label(for="agent") Sales Agent:
-          input#agent.form-control(type="text", placeholder="Sales Agent", name="agent", required)
+        //- .mb-2
+        //-   label(for="agent") Sales Agent:
+        //-   input#agent.form-control(type="text", placeholder="Sales Agent", name="agent", required)
         .mb-2
           label(for="delivery") Delivery Method:
           input#delivery.form-control(type="text", placeholder="Delivery Method", name="delivery", required)

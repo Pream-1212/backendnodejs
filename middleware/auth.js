@@ -1,5 +1,5 @@
 // ensure user is authenticated
-exports.ensureAuthenticated = (req, res, next) => {
+exports.ensureauthenticated = (req, res, next) => {
   if (req.session.user){
     return next()
   }

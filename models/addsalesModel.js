@@ -3,43 +3,40 @@ const mongoose = require('mongoose');
 const addsaleSchema = new mongoose.Schema({
   date: {
     type: Date,
-    required: true
+    required: true,
   },
-  
+
   name: {
     type: String,
     required: true,
-    
   },
 
   product: {
     type: String,
-    required: true
+    required: true,
   },
   quantity: {
     type: Number,
     required: true,
-    
   },
-  price: {
+  unitPrice: {
     type: Number,
-    required: true
-   
+    required: true,
   },
   payment: {
     type: String,
     required: true,
-    trim:true
+    trim: true,
   },
   agent: {
-    type: String,
-    required:true
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "UserModel",
+    required: true,
   },
   delivery: {
     type: String,
-    required:true
+    required: true,
   },
- 
 });
 
 module.exports = mongoose.model("addsalesModel", addsaleSchema);

@@ -13,19 +13,19 @@ header
       .collapse.navbar-collapse#navbarNav
         ul.navbar-nav.ms-auto
           li.nav-item.active
-            a.nav-link(href="index.html") Home
+            a.nav-link(href="index.") Home
           li.nav-item
-            a.nav-link(href="users.html") Get us
+            a.nav-link(href="users.") Get us
           li.nav-item
-            a.nav-link(href="dash.html") viewport
+            a.nav-link(href="dash.") viewport
           li.nav-item
-            a.nav-link(href="general.html") Customer
+            a.nav-link(href="general.") Customer
           li.nav-item
-            a.nav-link(href="sales.html") Sales
+            a.nav-link(href="sales.") Sales
           li.nav-item
             a.nav-link(href="/logout") logout
           li.nav-item
-            a.nav-link(href="suppliers.html") supply
+            a.nav-link(href="suppliers.") supply
 .container-fluid.p-4
   h2.text-center.mb-4 📊 MWF Manager Dashboard
   //  Overview Cards 
@@ -40,8 +40,11 @@ header
         p 100+ Companies
     .col-md-3
       .card.p-3
-        h5 Stock Cost
-        p UGX 120,000,000
+        h5.card.title Total Expenses
+        p.card-text For poles:shs #{new Intl .NumberFormat().format(totalExpensesPoles.totalcost)} 
+        p.card-text For Beds:shs #{new Intl .NumberFormat().format(totalExpensesBeds.totalcost)} 
+        p.card-text For Cabinets:shs#{new Intl .NumberFormat().format(totalExpensesCabinets.totalcost)} 
+        h5.card-text Total Expenses:shs#{new Intl .NumberFormat().format(totalExpensesCabinets.totalcost)+ (totalExpensesPoles.totalcost)+(totalExpensesBeds.totalcost)} 
     .col-md-3
       .card.p-3
         h5 Stock Price
@@ -60,7 +63,8 @@ header
   .row.g-4.mb-4
     .col-md-6
       .card.p-3
-        h5 Revenue Per Product
+        h5.card-title Revenue Per Product
+        p.card-text For Sofa:shs #{new Intl .NumberFormat().format(totalRevenueSofa.totalcost)} 
         canvas#revenueChart
     .col-md-6
       .card.p-3
